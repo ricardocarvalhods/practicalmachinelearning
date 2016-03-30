@@ -118,7 +118,7 @@ table(trainingF$classe)
 
 
 ## Machine Learning
-As stated before we chose Random Forest as the algorithm. Before running caret's **train** function we reserve 20 cores to be used in our server, since we already antecipate a lot of processing. We also creat a **trainControl** object to specify 10-Fold Cross Validation one time and pass it to the **train** function. Then our code to create the model is:
+As stated before we chose Random Forest as the algorithm, because it can deal with lots of highly correlated features and generally is a bagging algorithm with great results. Before running caret's **train** function we reserve 20 cores to be used in our server, since we already antecipate a lot of processing. We also creat a **trainControl** object to specify 10-Fold Cross Validation one time and pass it to the **train** function. Then our code to create the model is:
 
 ```{r, eval=FALSE}
 library(doParallel)
@@ -136,6 +136,8 @@ plot(model)
 ```
 
 From the results we see that the final model has 59 randomly selected predictors of the 117 submitted, and a accuracy of 99.51579% from our 10-Fold Cross Validation.
+
+Since these results are from 10-Fold Cross Validation, we expect the out of sample error to be 1 - 99.51579, which is 0.48421%.
 
 
 ## Testing the final model
